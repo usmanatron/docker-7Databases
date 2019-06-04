@@ -3,7 +3,7 @@ version: '3.1'
 services:
 
   db:
-    container_name: 7dbs_postgres_postgres
+    container_name: 7dbs_postgres_db
     image: postgres:11.3
     restart: always
     environment:
