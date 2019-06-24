@@ -1,0 +1,1 @@
+docker-compose -f docker-hbase\docker-compose-standalone.yml down
