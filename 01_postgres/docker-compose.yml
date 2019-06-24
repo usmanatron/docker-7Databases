@@ -13,7 +13,7 @@ services:
 
   adminer:
     container_name: 7dbs_postgres_adminer
-    image: adminer
+    image: adminer:4.7.1
     restart: always
     ports:
       - 8081:8080
