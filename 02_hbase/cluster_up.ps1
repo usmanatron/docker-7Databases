@@ -5,4 +5,4 @@ docker-compose -f docker-hbase\docker-compose-distributed-local.yml up --detach
 [Diagnostics.Process]::Start('http://localhost:16010')
 
 # Connect to HBase shell
-docker exec -it hbase /opt/hbase-1.2.6/bin/hbase shell
+docker exec -it hbase-master /opt/hbase-1.2.6/bin/hbase shell
