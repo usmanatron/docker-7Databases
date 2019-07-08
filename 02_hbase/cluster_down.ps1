@@ -1,1 +1,1 @@
-docker-compose -f docker-hbase\docker-compose-distributed-local.yml down
+docker-compose -f docker-images\docker-compose-distributed-local.yml down

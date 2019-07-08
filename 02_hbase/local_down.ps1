@@ -1,4 +1,4 @@
-docker-compose -f docker-hbase\docker-compose-standalone.yml down
+docker-compose -f docker-images\docker-compose-standalone.yml down
 
 docker volume rm docker-hbase_hadoop_namenode
 docker volume rm docker-hbase_hadoop_datanode
