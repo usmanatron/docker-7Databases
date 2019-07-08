@@ -17,7 +17,7 @@ services:
     volumes:
       - hadoop_datanode:/hadoop/dfs/data
     environment:
-      SERVICE_PRECONDITION: "namenode:5070"
+      SERVICE_PRECONDITION: "namenode:50070"
     env_file:
       - ./hadoop.env
 
@@ -25,7 +25,7 @@ services:
     image: bde2020/hadoop-resourcemanager:2.0.0-hadoop2.7.4-java8
     container_name: resourcemanager
     environment:
-      SERVICE_PRECONDITION: "namenode:5070 datanode:5075"
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075"
     env_file:
       - ./hadoop.env
 
@@ -33,7 +33,7 @@ services:
     image: bde2020/hadoop-nodemanager:2.0.0-hadoop2.7.4-java8
     container_name: nodemanager
     environment:
-      SERVICE_PRECONDITION: "namenode:5070 datanode:5075 resourcemanager:8088"
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 resourcemanager:8088"
     env_file:
       - ./hadoop.env
 
@@ -43,7 +43,7 @@ services:
     volumes:
       - hadoop_historyserver:/hadoop/yarn/timeline
     environment:
-      SERVICE_PRECONDITION: "namenode:5070 datanode:5075 resourcemanager:8088"
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 resourcemanager:8088"
     env_file:
       - ./hadoop.env
 
@@ -62,7 +62,7 @@ services:
       - 3888:3888
       - 2181:2181
     environment:
-      SERVICE_PRECONDITION: "namenode:5070 datanode:5075"
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075"
     env_file:
       - ./hbase-standalone.env
 

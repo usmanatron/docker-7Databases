@@ -11,7 +11,7 @@ services:
     env_file:
       - ./hadoop.env
     ports:
-      - 5070:50070
+      - 50070:50070
 
   datanode:
     image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
@@ -19,17 +19,17 @@ services:
     volumes:
       - hadoop_datanode:/hadoop/dfs/data
     environment:
-      SERVICE_PRECONDITION: "namenode:5070"
+      SERVICE_PRECONDITION: "namenode:50070"
     env_file:
       - ./hadoop.env
     ports:
-      - 5075:50075
+      - 50075:50075
 
   resourcemanager:
     image: bde2020/hadoop-resourcemanager:2.0.0-hadoop2.7.4-java8
     container_name: resourcemanager
     environment:
-      SERVICE_PRECONDITION: "namenode:5070 datanode:5075"
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075"
     env_file:
       - ./hadoop.env
     ports:
@@ -39,7 +39,7 @@ services:
     image: bde2020/hadoop-nodemanager:2.0.0-hadoop2.7.4-java8
     container_name: nodemanager
     environment:
-      SERVICE_PRECONDITION: "namenode:5070 datanode:5075 resourcemanager:8088"
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 resourcemanager:8088"
     env_file:
       - ./hadoop.env
     ports:
@@ -51,7 +51,7 @@ services:
     volumes:
       - hadoop_historyserver:/hadoop/yarn/timeline
     environment:
-      SERVICE_PRECONDITION: "namenode:5070 datanode:5075 resourcemanager:8088"
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 resourcemanager:8088"
     env_file:
       - ./hadoop.env
     ports:
@@ -73,7 +73,7 @@ services:
     env_file:
       - ./hbase-distributed-local.env
     environment:
-      SERVICE_PRECONDITION: "namenode:5070 datanode:5075 zoo:2181"
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 zoo:2181"
     volumes:
       - ./scripts:/tmp/scripts
     ports:
@@ -87,7 +87,7 @@ services:
       - ./hbase-distributed-local.env
     environment:
       HBASE_CONF_hbase_regionserver_hostname: hbase-region
-      SERVICE_PRECONDITION: "namenode:5070 datanode:5075 zoo:2181 hbase-master:16010"
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 zoo:2181 hbase-master:16010"
     ports:
       - 16030:16030
 
